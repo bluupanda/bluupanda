@@ -30,7 +30,7 @@
             font-size: 100px;
             font-family: 'Jersey 20', Arial, sans-serif;
             font-weight: bold;
-            animation: rgbColor 3s infinite, rgbGlowDynamic 3s infinite; /* Dynamic glow animation */
+            animation: rgbColor 3s infinite, rgbGlowDynamic 3s infinite;
         }
 
         @keyframes rgbColor {
@@ -67,9 +67,9 @@
 
         #aliendog {
             position: absolute;
-            width: 100px; /* Adjust size as needed */
+            width: 100px;
             height: auto;
-            pointer-events: none; /* Prevent interaction */
+            pointer-events: none;
         }
 
         .centered-text {
@@ -77,84 +77,83 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 40px; /* Increased font size */
+            font-size: 40px;
             font-family: 'Jersey 20', Arial, sans-serif;
             font-weight: bold;
-            color: rgb(50, 243, 11); /* Green color */
+            color: rgb(50, 243, 11);
             text-align: center;
         }
 
         @keyframes greenGlow {
             0%, 100% {
-                text-shadow: 0 0 2px rgb(50, 243, 11), 0 0 5px rgb(50, 243, 11); /* Lower intensity */
+                text-shadow: 0 0 2px rgb(50, 243, 11), 0 0 5px rgb(50, 243, 11);
             }
             50% {
-                text-shadow: 0 0 4px rgb(50, 243, 11), 0 0 10px rgb(50, 243, 11); /* Slightly brighter */
+                text-shadow: 0 0 4px rgb(50, 243, 11), 0 0 10px rgb(50, 243, 11);
             }
         }
 
         .button-container {
             position: absolute;
-            top: 61%; /* Adjusted to position the buttons below the game */
+            top: 61%;
             left: 50%;
             transform: translate(-50%, -50%);
             display: flex;
-            flex-direction: column; /* Stack buttons vertically */
-            align-items: center; /* Center buttons horizontally */
-            gap: 10px; /* Space between buttons */
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
         }
 
         .styled-button {
-            font-size: 40px; /* Increased font size to match paragraph */
+            font-size: 40px;
             font-family: 'Jersey 20', Arial, sans-serif;
             font-weight: bold;
             border: none;
-            background: none; /* Remove background */
-            color: white; /* Default text color */
+            background: none;
+            color: white;
             cursor: pointer;
-            text-shadow: 0 0 2px rgba(255, 255, 255, 0.5); /* Subtle glow */
+            text-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
             transition: color 0.2s, text-shadow 0.2s;
-            text-decoration: none; /* Remove underline */
+            text-decoration: none;
         }
 
         .styled-button:hover {
-            text-shadow: 0 0 10px currentColor, 0 0 20px currentColor; /* Glow in the button's color */
+            text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
         }
 
         .green-button {
-            color: rgb(50, 243, 11); /* Green text */
+            color: rgb(50, 243, 11);
         }
 
         .red-button {
-            color: rgb(255, 12, 133); /* Red text */
+            color: rgb(255, 12, 133);
         }
 
         .blue-button {
-            color: blue; /* Blue text */
+            color: blue;
         }
 
         .gif-container {
             position: absolute;
-            top: 40%; /* Adjust to position the GIF above the paragraph */
+            top: 40%;
             left: 50%;
             transform: translate(-50%, -50%);
         }
 
         .gif-image {
-            width: 150px; /* Adjust size as needed */
+            width: 150px;
             height: auto;
         }
 
-    
         .space-game-container {
             position: absolute;
-            top: 30%; /* Position the game above the paragraph */
+            top: 30%;
             left: 50%;
             transform: translate(-50%, -50%);
             width: 600px;
-            height: 200px; /* Reduced height */
-            background-color: black; /* Background for the game area */
-            border: 2px solid white; /* Optional border for visibility */
+            height: 200px;
+            background-color: black;
+            border: 2px solid white;
             overflow: hidden;
         }
 
@@ -164,16 +163,16 @@
         }
 
         .score-display {
-            position: relative; /* Change to relative to position it naturally below the game */
-            top: 380px; /* Reset top positioning */
+            position: relative;
+            top: 380px;
             left: 50%;
-            transform: translateX(-50%); /* Center horizontally */
+            transform: translateX(-50%);
             font-size: 15px;
             font-family: 'Jersey 20', Arial, sans-serif;
             font-weight: bold;
             color: rgb(255, 166, 0);
             text-align: center;
-            margin-top: 10px; /* Add spacing between the game and the scoreboard */
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -188,7 +187,6 @@
     <div class="score-display">Score: <span id="score">0</span></div>
     <div class="centered-text">게임과 음악을 좋아합니다</div>
 
-    <!-- Buttons added below the paragraph -->
     <div class="button-container">
         <a href="https://www.instagram.com/vewdooo/" target="_blank" class="styled-button green-button">instagram</a>
         <a href="https://open.spotify.com/user/31js66x3sjbitxzsy2amdwlvwhey?si=e826216376ae4b47" target="_blank" class="styled-button red-button">spotify</a>
@@ -199,19 +197,16 @@
         const canvas = document.getElementById('starsCanvas');
         const ctx = canvas.getContext('2d');
 
-        // Function to set canvas size to fill the window
         function resizeCanvas() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         }
 
-        // Initial canvas size
         resizeCanvas();
 
         const stars = [];
         const numStars = 900;
 
-        // Generate stars
         for (let i = 0; i < numStars; i++) {
             stars.push({
                 x: Math.random() * canvas.width,
@@ -236,18 +231,17 @@
             stars.forEach(star => {
                 star.opacity += star.blinkSpeed;
                 if (star.opacity >= 1 || star.opacity <= 0) {
-                    star.blinkSpeed *= -1; // Reverse direction
+                    star.blinkSpeed *= -1;
                 }
             });
         }
 
-        // Smooth random movement for the alien dog
         const alienDog = document.getElementById('aliendog');
         let targetX = Math.random() * (window.innerWidth - 100);
         let targetY = Math.random() * (window.innerHeight - 100);
         let currentX = 0;
         let currentY = 0;
-        const speed = 4; // Increased speed for faster movement
+        const speed = 4;
 
         function moveAlienDog() {
             const dx = targetX - currentX;
@@ -255,11 +249,9 @@
             const distance = Math.sqrt(dx * dx + dy * dy);
 
             if (distance < speed) {
-                // Set a new random target position when the current target is reached
                 targetX = Math.random() * (window.innerWidth - 100);
                 targetY = Math.random() * (window.innerHeight - 100);
             } else {
-                // Move towards the target position
                 currentX += (dx / distance) * speed;
                 currentY += (dy / distance) * speed;
                 alienDog.style.transform = `translate(${currentX}px, ${currentY}px)`;
@@ -277,93 +269,78 @@
         animate();
         moveAlienDog();
 
-        // Adjust canvas size on window resize
         window.addEventListener('resize', resizeCanvas);
 
         const spaceCanvas = document.getElementById('spaceGameCanvas');
         const spaceCtx = spaceCanvas.getContext('2d');
 
-        // Set canvas size
         spaceCanvas.width = 600;
         spaceCanvas.height = 300;
 
-        // Player spaceship
         const player = {
-            x: spaceCanvas.width / 2 - 25, // Adjusted for larger width
-            y: spaceCanvas.height - 60,   // Adjusted for larger height
-            width: 50,                    // Increased width
-            height: 50,                   // Increased height
+            x: spaceCanvas.width / 2 - 25,
+            y: spaceCanvas.height - 60,
+            width: 50,
+            height: 50,
             color: 'white',
             speed: 5,
             dx: 0
         };
 
-        // Load the alien dog image
         const alienDogImage = new Image();
-        alienDogImage.src = 'aliendog.png'; // Replace with the correct path to your image
+        alienDogImage.src = 'aliendog.png';
 
-        // Bullets
         const bullets = [];
         const bulletSpeed = 7;
 
-        // Enemies
         const enemies = [];
         const enemySpeed = 2;
 
-        // Load the sandwich image
         const sandwichImage = new Image();
-        sandwichImage.src = 'sandwich.png'; // Replace with the correct path to your image
+        sandwichImage.src = 'sandwich.png';
 
-        // Create enemies
         function createEnemy() {
             const enemy = {
-                x: Math.random() * (spaceCanvas.width - 50), // Adjust for larger size
+                x: Math.random() * (spaceCanvas.width - 50),
                 y: 0,
-                width: 50, // Larger width
-                height: 50, // Larger height
+                width: 50,
+                height: 50,
                 color: 'red'
             };
             enemies.push(enemy);
         }
 
-        // Draw player
         function drawPlayer() {
             if (alienDogImage.complete) {
                 spaceCtx.drawImage(alienDogImage, player.x, player.y, player.width, player.height);
             } else {
-                // Fallback to a white rectangle if the image is not loaded yet
                 spaceCtx.fillStyle = player.color;
                 spaceCtx.fillRect(player.x, player.y, player.width, player.height);
             }
         }
 
-        // Draw bullets
         function drawBullets() {
             bullets.forEach((bullet, index) => {
                 spaceCtx.fillStyle = 'yellow';
                 spaceCtx.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
                 bullet.y -= bulletSpeed;
 
-                // Remove bullet if it goes off-screen
                 if (bullet.y + bullet.height < 0) {
                     bullets.splice(index, 1);
                 }
             });
         }
 
-        // Draw enemies
         function drawEnemies() {
             enemies.forEach((enemy, index) => {
                 if (sandwichImage.complete) {
                     spaceCtx.drawImage(sandwichImage, enemy.x, enemy.y, enemy.width, enemy.height);
                 } else {
-                    // Fallback to a red rectangle if the image is not loaded yet
                     spaceCtx.fillStyle = enemy.color;
                     spaceCtx.fillRect(enemy.x, enemy.y, enemy.width, enemy.height);
                 }
                 enemy.y += enemySpeed;
 
-                // Remove enemy if it goes off-screen
                 if (enemy.y > spaceCanvas.height) {
                     enemies.splice(index, 1);
                 }
@@ -372,7 +349,6 @@
 
         let score = 0;
 
-        // Check for bullet collisions with enemies
         function checkCollisions() {
             bullets.forEach((bullet, bulletIndex) => {
                 enemies.forEach((enemy, enemyIndex) => {
@@ -382,18 +358,15 @@
                         bullet.y < enemy.y + enemy.height &&
                         bullet.y + bullet.height > enemy.y
                     ) {
-                        // Remove bullet and enemy on collision
                         bullets.splice(bulletIndex, 1);
                         enemies.splice(enemyIndex, 1);
 
-                        // Increase score
                         score += 1;
                         document.getElementById('score').textContent = score;
                     }
                 });
             });
 
-            // Check if the player "eats" the sandwich
             enemies.forEach((enemy, enemyIndex) => {
                 if (
                     player.x < enemy.x + enemy.width &&
@@ -401,7 +374,6 @@
                     player.y < enemy.y + enemy.height &&
                     player.y + player.height > enemy.y
                 ) {
-                    // Remove the sandwich and increase score
                     enemies.splice(enemyIndex, 1);
                     score += 1;
                     document.getElementById('score').textContent = score;
@@ -409,16 +381,13 @@
             });
         }
 
-        // Move player
         function movePlayer() {
             player.x += player.dx;
 
-            // Prevent player from going out of bounds
             if (player.x < 0) player.x = 0;
             if (player.x + player.width > spaceCanvas.width) player.x = spaceCanvas.width - player.width;
         }
 
-        // Game loop
         function gameLoop() {
             spaceCtx.clearRect(0, 0, spaceCanvas.width, spaceCanvas.height);
 
@@ -431,14 +400,12 @@
             requestAnimationFrame(gameLoop);
         }
 
-        // Event listeners for player movement
         document.addEventListener('keydown', (e) => {
             if (e.code === 'ArrowLeft') {
                 player.dx = -player.speed;
             } else if (e.code === 'ArrowRight') {
                 player.dx = player.speed;
             } else if (e.code === 'Space') {
-                // Shoot bullet
                 bullets.push({
                     x: player.x + player.width / 2 - 2.5,
                     y: player.y,
@@ -454,10 +421,8 @@
             }
         });
 
-        // Spawn enemies every 2 seconds
         setInterval(createEnemy, 2000);
 
-        // Start the game loop
         gameLoop();
     </script>
 </body>
